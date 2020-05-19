@@ -5,16 +5,19 @@
 	<?php foreach($data["mhs"] as $row): ?>
 		<ul>
 			<li>
-				<?= $row["Nama"]; ?>
+				<?= $row["nama_mhs"]; ?>
 			</li>
 			<li>
-				<?= $row["NPM"]; ?>
+				<?= $row["npm"]; ?>
 			</li>
 			<li>
-				<?= $row["Email"]; ?>
+				<?= $row["jurusan"]; ?>
 			</li>
 			<li>
-				<?= $row["Kelas"]; ?>
+				<?= $row["semester"]; ?>
+			</li>
+			<li>
+				<?= $row["kelas"]; ?>
 			</li>
 		</ul>
 	<?php endforeach; ?>
