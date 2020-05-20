@@ -1,4 +1,4 @@
-<div class="card mt-2" style="width: 18rem;">
+<div class="card mt-2" style="width: 26rem;">
   <div class="card-body">
     <h5 class="card-title">
         <?= $data["judul"]; ?>
