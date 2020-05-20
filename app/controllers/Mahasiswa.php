@@ -7,6 +7,7 @@ class Mahasiswa extends Controller
 		$data["judul"] = "Daftar Mahasiswa";
 		$data["link"] = BASEURL . "/mahasiswa";
 		$data["mhs"] = $this->model("Mahasiswa_model")->getAllMahasiswa();
+		$data["jurusan"] = $this->model("Mahasiswa_model")->getJurusan();
 		$this->view("template/header", $data);
 		$this->view("mahasiswa/index", $data);
 		$this->view("template/footer");

@@ -17,6 +17,12 @@
     </h6>
     <h6 class="card-text text-muted">
         <label >
+            Fakultas :
+        </label>
+        <?= $data['mhs']["fakultas"]; ?>
+    </h6>
+    <h6 class="card-text text-muted">
+        <label >
             Jurusan :
         </label>
         <?= $data['mhs']["jurusan"]; ?>
