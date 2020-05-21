@@ -54,14 +54,16 @@ class Mahasiswa_model
 		return $this->db->resultAll();
 	}
 
-	public function getJurusan()
+	public function getJurusan($id_fakultas)
 	{
 		$query = "
 			SELECT * FROM jurusan
+			WHERE id_fakultas = :id_fakultas
 			GROUP BY id_jurusan
 			ORDER BY id_fakultas
 		";
 		$this->db->query($query);
+		$this->db->bind('id_fakultas', $id_fakultas);
 		return $this->db->resultAll();
 	}
 

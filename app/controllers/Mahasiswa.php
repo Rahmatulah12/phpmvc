@@ -7,7 +7,7 @@ class Mahasiswa extends Controller
 		$data["judul"] = "Daftar Mahasiswa";
 		$data["link"] = BASEURL . "/mahasiswa";
 		$data["mhs"] = $this->model("Mahasiswa_model")->getAllMahasiswa();
-		$data["jurusan"] = $this->model("Mahasiswa_model")->getJurusan();
+		// $data["jurusan"] = $this->model("Mahasiswa_model")->getJurusan();
 		$data["fakultas"] = $this->model("Mahasiswa_model")->getFakultas();
 		$this->view("template/header", $data);
 		$this->view("mahasiswa/index", $data);
@@ -32,4 +32,11 @@ class Mahasiswa extends Controller
 			exit;
 		}
 	}
+
+	public function selectFakultas($id_fakultas)
+	{
+		 $data["jurusan"] = $this->model("Mahasiswa_model")->getJurusan($id_fakultas);
+		$this->view('mahasiswa/selectFakultas', $data);
+	}
+
 }

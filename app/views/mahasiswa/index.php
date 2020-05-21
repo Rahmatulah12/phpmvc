@@ -41,7 +41,7 @@
 				<label for="nama_mhs">
 					Nama Mahasiswa
 				</label>
-				<input type="text" class="form-control" id="nama_mhs" name="nama_mhs" placeholder="masukan nama lengkap mahasiswa..." autocomplete="off">
+				<input type="text" class="form-control" id="nama_mhs" name="nama_mhs" placeholder="masukan nama lengkap mahasiswa..." autocomplete="off" autofocus>
 			</div>
 			<div class="form-group">
 				<label for="npm">
@@ -54,7 +54,7 @@
 					Fakultas
 				</label>
 				<select class="form-control" name="fakultas" id="fakultas">
-					<option value="default" disabled selected>
+					<option value="0" disabled selected>
 						--Pilih Fakultas--
 					</option>
 					<?php foreach($data['fakultas'] as $fakultas): ?>
@@ -69,14 +69,9 @@
 					Jurusan
 				</label>
 				<select class="form-control" name="jurusan" id="jurusan">
-					<option value="default" disabled selected>
+					<option value="0" disabled selected>
 						--Pilih Jurusan--
 					</option>
-					<?php foreach($data['jurusan'] as $jurusan): ?>
-						<option value="<?= $jurusan['id_jurusan']; ?>">
-							<?= $jurusan['nm_jurusan']; ?>
-						</option>
-					<?php endforeach; ?>
 				</select>
 			</div>
 			<div class="form-group">
