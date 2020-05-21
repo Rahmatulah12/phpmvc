@@ -9,10 +9,10 @@
 		<h3 class="display-5">Daftar Mahasiswa</h3>
 	</div>
 	<ul class="list-group" style="width:26rem;">
-		<?php foreach($data["mhs"] as $row): ?>
+		<?php foreach($data["mhs"] as $mhs): ?>
 			<li class="list-group-item d-flex justify-content-between align-items-center">
-				<?= $row["nama_mhs"]; ?>
-				<a href="<?= BASEURL; ?>/mahasiswa/details/<?= $row['npm']; ?>" class="badge badge-success">Details</a href="">
+				<?= $mhs["nama_mhs"]; ?>
+				<a href="<?= BASEURL; ?>/mahasiswa/details/<?= $mhs['npm']; ?>" class="badge badge-success">Details</a>
 			</li>
 		<?php endforeach; ?>
 	</ul>
@@ -36,7 +36,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="" method="post">
+        <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post">
 			<div class="form-group">
 				<label for="nama_mhs">
 					Nama Mahasiswa
@@ -47,7 +47,7 @@
 				<label for="npm">
 					Nomor Pokok Mahasiswa
 				</label>
-				<input type="text" class="form-control" id="npm" name="npm" placeholder="masukan nomor pokok mahasiswa(npm)..." autocomplete="off">
+				<input type="number" class="form-control" id="npm" name="npm" placeholder="masukan nomor pokok mahasiswa(npm)..." autocomplete="off">
 			</div>
 			<div class="form-group">
 				<label for="fakultas">
@@ -89,7 +89,7 @@
 				<label for="jurusan">
 					Jurusan
 				</label>
-				<select class="form-control" name="jurusan" id="jurusan">
+				<select class="form-control" name="kelas" id="kelas">
 					<option value="default" disabled selected>
 						--Pilih Kelas--
 					</option>
@@ -104,8 +104,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary"
-		name="tambah">
+        <button type="submit" class="btn btn-primary">
 			Tambah Data
 		</button>
 		</form>

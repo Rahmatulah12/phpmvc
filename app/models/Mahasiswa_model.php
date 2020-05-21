@@ -21,8 +21,6 @@ class Mahasiswa_model
 		INNER JOIN
 		fakultas AS f
 		ON j.id_fakultas = f.id_fakultas
-		GROUP BY j.id_jurusan
-		ORDER BY j.id_fakultas
 		";
 		$this->db->query($query);
 		return $this->db->resultAll();
@@ -41,8 +39,6 @@ class Mahasiswa_model
 				fakultas AS f
 				ON j.id_fakultas = f.id_fakultas
 				WHERE m.npm =:npm
-				GROUP BY j.id_jurusan
-				ORDER BY j.id_fakultas
 		";
 		$this->db->query($query);
 		$this->db->bind('npm', $npm);
@@ -67,5 +63,23 @@ class Mahasiswa_model
 		";
 		$this->db->query($query);
 		return $this->db->resultAll();
+	}
+
+	public function tambahDataMahasiswa($data)
+	{
+		$query = "
+			INSERT INTO mahasiswa(nama_mhs, npm, id_fakultas, id_jurusan, semester, kelas)
+			VALUES
+			(:nama_mhs, :npm, :id_fakultas, :id_jurusan, :semester, :kelas)
+		";
+		$this->db->query($query);
+		$this->db->bind('nama_mhs', $data['nama_mhs']);
+		$this->db->bind('npm', $data['npm']);
+		$this->db->bind('id_fakultas', $data['fakultas']);
+		$this->db->bind('id_jurusan', $data['jurusan']);
+		$this->db->bind('semester', $data['semester']);
+		$this->db->bind('kelas', $data['kelas']);
+		$this->db->execute();
+		return $this->db->rowCount();
 	}
 }
