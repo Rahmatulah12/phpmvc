@@ -50,6 +50,21 @@
 				<input type="text" class="form-control" id="npm" name="npm" placeholder="masukan nomor pokok mahasiswa(npm)..." autocomplete="off">
 			</div>
 			<div class="form-group">
+				<label for="fakultas">
+					Fakultas
+				</label>
+				<select class="form-control" name="fakultas" id="fakultas">
+					<option value="default" disabled selected>
+						--Pilih Fakultas--
+					</option>
+					<?php foreach($data['fakultas'] as $fakultas): ?>
+						<option value="<?= $fakultas['id_fakultas']; ?>">
+							<?= $fakultas['nm_fakultas']; ?>
+						</option>
+					<?php endforeach; ?>
+				</select>
+			</div>
+			<div class="form-group">
 				<label for="jurusan">
 					Jurusan
 				</label>
@@ -62,6 +77,28 @@
 							<?= $jurusan['nm_jurusan']; ?>
 						</option>
 					<?php endforeach; ?>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="semester">
+					Semester
+				</label>
+				<input type="number" class="form-control" id="semester" name="semester" autocomplete="off">
+			</div>
+			<div class="form-group">
+				<label for="jurusan">
+					Jurusan
+				</label>
+				<select class="form-control" name="jurusan" id="jurusan">
+					<option value="default" disabled selected>
+						--Pilih Kelas--
+					</option>
+					<option value="Reguler Pagi">
+						Reguler Pagi
+					</option>
+					<option value="Reguler Sore">
+						Reguler Sore
+					</option>
 				</select>
 			</div>
       </div>

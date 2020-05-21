@@ -49,6 +49,15 @@ class Mahasiswa_model
 		return $this->db->singleResult();
 	}
 
+	public function getFakultas()
+	{
+		$query = "
+			SELECT * FROM fakultas
+		";
+		$this->db->query($query);
+		return $this->db->resultAll();
+	}
+
 	public function getJurusan()
 	{
 		$query = "
