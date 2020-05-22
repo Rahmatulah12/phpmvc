@@ -42,12 +42,14 @@
 					Nama Mahasiswa
 				</label>
 				<input type="text" class="form-control" id="nama_mhs" name="nama_mhs" placeholder="masukan nama lengkap mahasiswa..." autocomplete="off" autofocus>
+				<span id="nama" class="form-text text-danger" style="font-size: 14px;"></span>
 			</div>
 			<div class="form-group">
 				<label for="npm">
 					Nomor Pokok Mahasiswa
 				</label>
 				<input type="number" class="form-control" id="npm" name="npm" placeholder="masukan nomor pokok mahasiswa(npm)..." autocomplete="off">
+				<span id="checkNpm" class="form-text text-danger" style="font-size: 14px;"></span>
 			</div>
 			<div class="form-group">
 				<label for="fakultas">
@@ -63,6 +65,7 @@
 						</option>
 					<?php endforeach; ?>
 				</select>
+				<span id="checkFakultas" class="form-text text-danger" style="font-size: 14px;"></span>
 			</div>
 			<div class="form-group">
 				<label for="jurusan">
@@ -73,16 +76,18 @@
 						--Pilih Jurusan--
 					</option>
 				</select>
+				<span id="checkJurusan" class="form-text text-danger" style="font-size: 14px;"></span>
 			</div>
 			<div class="form-group">
 				<label for="semester">
 					Semester
 				</label>
 				<input type="number" class="form-control" id="semester" name="semester" autocomplete="off">
+				<span id="checkSemester" class="form-text text-danger" style="font-size: 14px;"></span>
 			</div>
 			<div class="form-group">
 				<label for="jurusan">
-					Jurusan
+					Kelas
 				</label>
 				<select class="form-control" name="kelas" id="kelas">
 					<option value="default" disabled selected>
@@ -95,6 +100,7 @@
 						Reguler Sore
 					</option>
 				</select>
+				<span id="checkKelas" class="form-text text-danger" style="font-size: 14px;"></span>
 			</div>
       </div>
       <div class="modal-footer">
