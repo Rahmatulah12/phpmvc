@@ -27,6 +27,11 @@ class Mahasiswa extends Controller
 	{
 		if($this->model("Mahasiswa_model")->tambahDataMahasiswa($_POST) > 0)
 		{
+			FlashMessage::setMessage('Data has been', 'saved', 'success');
+			header("Location: " . BASEURL . "/mahasiswa");
+			exit;
+		} else {
+			FlashMessage::setMessage('Data failed to', 'saved', 'danger');
 			header("Location: " . BASEURL . "/mahasiswa");
 			exit;
 		}
