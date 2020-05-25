@@ -69,19 +69,37 @@ class Mahasiswa_model
 
 	public function tambahDataMahasiswa($data)
 	{
-		$query = "
-			INSERT INTO mahasiswa(nama_mhs, npm, id_fakultas, id_jurusan, semester, kelas)
-			VALUES
-			(:nama_mhs, :npm, :id_fakultas, :id_jurusan, :semester, :kelas)
-		";
-		$this->db->query($query);
-		$this->db->bind('nama_mhs', $data['nama_mhs']);
-		$this->db->bind('npm', $data['npm']);
-		$this->db->bind('id_fakultas', $data['fakultas']);
-		$this->db->bind('id_jurusan', $data['jurusan']);
-		$this->db->bind('semester', $data['semester']);
-		$this->db->bind('kelas', $data['kelas']);
-		$this->db->execute();
-		return $this->db->rowCount();
+		// if($data['nama_mhs'] == null || $data['npm'] == null || $data["semester"] == null || $data["fakultas"] == 0 || $data["jurusan"] == 0 || $data['kelas'] == 0)
+		// {
+		// 	return 0;
+		// } else
+		// {
+			$query = "
+				INSERT INTO mahasiswa(nama_mhs, npm, id_fakultas, id_jurusan, semester, kelas)
+				VALUES
+				(:nama_mhs, :npm, :id_fakultas, :id_jurusan, :semester, :kelas)
+			";
+			$this->db->query($query);
+			$this->db->bind('nama_mhs', $data['nama_mhs']);
+			$this->db->bind('npm', $data['npm']);
+			$this->db->bind('id_fakultas', $data['fakultas']);
+			$this->db->bind('id_jurusan', $data['jurusan']);
+			$this->db->bind('semester', $data['semester']);
+			$this->db->bind('kelas', $data['kelas']);
+			$this->db->execute();
+			return $this->db->rowCount();
+		// }
 	}
+
+	public function delete($npm)
+	{
+		$query = "DELETE FROM mahasiswa WHERE npm = :npm";
+		$this->db->query($query);
+		$this->db->bind('npm', $npm);
+		$this->db->execute();
+
+		return $this->db->rowCount();
+		// return 0;
+	}
+
 }

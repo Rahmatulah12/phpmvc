@@ -23,6 +23,12 @@ class Mahasiswa extends Controller
 		$this->view("template/footer");
 	}
 
+	public function selectFakultas($id_fakultas)
+	{
+		 $data["jurusan"] = $this->model("Mahasiswa_model")->getJurusan($id_fakultas);
+		$this->view('mahasiswa/selectFakultas', $data);
+	}
+
 	public function tambah()
 	{
 		if($this->model("Mahasiswa_model")->tambahDataMahasiswa($_POST) > 0)
@@ -37,10 +43,18 @@ class Mahasiswa extends Controller
 		}
 	}
 
-	public function selectFakultas($id_fakultas)
+	public function delete($npm)
 	{
-		 $data["jurusan"] = $this->model("Mahasiswa_model")->getJurusan($id_fakultas);
-		$this->view('mahasiswa/selectFakultas', $data);
+		if($this->model("Mahasiswa_model")->delete($npm) > 0)
+		{
+			FlashMessage::setMessage('Data has been', 'deleted', 'success');
+			header("Location: " . BASEURL . "/mahasiswa");
+			exit;
+		} else {
+			FlashMessage::setMessage('Data failed to', 'deleted', 'danger');
+			header("Location: " . BASEURL . "/mahasiswa");
+			exit;
+		}
 	}
 
 }

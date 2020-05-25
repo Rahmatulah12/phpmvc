@@ -13,9 +13,10 @@
 	</div>
 	<ul class="list-group" style="width:26rem;">
 		<?php foreach($data["mhs"] as $mhs): ?>
-			<li class="list-group-item d-flex justify-content-between align-items-center">
+			<li class="list-group-item">
 				<?= $mhs["nama_mhs"]; ?>
-				<a href="<?= BASEURL; ?>/mahasiswa/details/<?= $mhs['npm']; ?>" class="badge badge-success">Details</a>
+				<a href="<?= BASEURL; ?>/mahasiswa/delete/<?= $mhs['npm']; ?>" class="badge badge-danger float-right ml-1" onclick="return confirm('Yakin?');">Delete</a>
+				<a href="<?= BASEURL; ?>/mahasiswa/details/<?= $mhs['npm']; ?>" class="badge badge-success float-right ml-1">Details</a>
 			</li>
 		<?php endforeach; ?>
 	</ul>
@@ -89,11 +90,11 @@
 				<span id="checkSemester" class="form-text text-danger" style="font-size: 14px;"></span>
 			</div>
 			<div class="form-group">
-				<label for="jurusan">
+				<label for="kelas">
 					Kelas
 				</label>
 				<select class="form-control" name="kelas" id="kelas">
-					<option value="default" disabled selected>
+					<option value="0" disabled selected>
 						--Pilih Kelas--
 					</option>
 					<option value="Reguler Pagi">

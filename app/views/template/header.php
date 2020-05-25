@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title><?php echo $data['judul']; ?></title>
 	<link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.min.css">
+	<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?= BASEURL; ?>/css/about.css">
 </head>
 <body>
