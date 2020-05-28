@@ -30,6 +30,7 @@ class Mahasiswa_model
 	{
 		$query = "
 				SELECT m.nama_mhs AS nama_mhs, m.npm AS npm,
+				m.id_fakultas AS id_fakultas, m.id_jurusan AS id_jurusan,
 				j.nm_jurusan AS jurusan, m.semester AS semester,
 				m.kelas AS kelas, f.nm_fakultas AS fakultas FROM phpmvc.mahasiswa AS m
 				INNER JOIN
@@ -54,16 +55,14 @@ class Mahasiswa_model
 		return $this->db->resultAll();
 	}
 
-	public function getJurusan($id_fakultas)
+	public function getJurusan()
 	{
 		$query = "
 			SELECT * FROM jurusan
-			WHERE id_fakultas = :id_fakultas
 			GROUP BY id_jurusan
 			ORDER BY id_fakultas
 		";
 		$this->db->query($query);
-		$this->db->bind('id_fakultas', $id_fakultas);
 		return $this->db->resultAll();
 	}
 
@@ -89,6 +88,30 @@ class Mahasiswa_model
 			$this->db->execute();
 			return $this->db->rowCount();
 		// }
+	}
+
+	public function updateData($data)
+	{
+		$query = "
+				UPDATE mahasiswa SET
+				nama_mhs = :nama_mhs,
+				npm = :npm,
+				id_fakultas= :id_fakultas,
+				id_jurusan = :id_jurusan,
+				semester = :semester,
+				kelas = :kelas
+				WHERE npm = :npm
+			";
+			$this->db->query($query);
+			$this->db->bind('nama_mhs', $data['nama_mhs']);
+			$this->db->bind('npm', $data['npm']);
+			$this->db->bind('id_fakultas', $data['fakultas']);
+			$this->db->bind('id_jurusan', $data['jurusan']);
+			$this->db->bind('semester', $data['semester']);
+			$this->db->bind('kelas', $data['kelas']);
+			$this->db->bind('npm', $data['npm']);
+			$this->db->execute();
+			return $this->db->rowCount();
 	}
 
 	public function delete($npm)

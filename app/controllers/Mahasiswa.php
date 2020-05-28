@@ -8,6 +8,7 @@ class Mahasiswa extends Controller
 		$data["link"] = BASEURL . "/mahasiswa";
 		$data["mhs"] = $this->model("Mahasiswa_model")->getAllMahasiswa();
 		$data["fakultas"] = $this->model("Mahasiswa_model")->getFakultas();
+		$data['jurusan'] = $this->model('Mahasiswa_model')->getJurusan();
 		$this->view("template/header", $data);
 		$this->view("mahasiswa/index", $data);
 		$this->view("template/footer");
@@ -23,11 +24,10 @@ class Mahasiswa extends Controller
 		$this->view("template/footer");
 	}
 
-	public function selectFakultas($id_fakultas)
-	{
-		 $data["jurusan"] = $this->model("Mahasiswa_model")->getJurusan($id_fakultas);
-		$this->view('mahasiswa/selectFakultas', $data);
-	}
+	// public function selectFakultas()
+	// {
+	// 	echo json_encode($this->model('Mahasiswa_model')->getJurusan($_POST['id']));
+	// }
 
 	public function tambah()
 	{
@@ -38,6 +38,20 @@ class Mahasiswa extends Controller
 			exit;
 		} else {
 			FlashMessage::setMessage('Data failed to', 'saved', 'danger');
+			header("Location: " . BASEURL . "/mahasiswa");
+			exit;
+		}
+	}
+
+	public function update()
+	{
+		if($this->model('Mahasiswa_model')->updateData($_POST) > 0)
+		{
+			FlashMessage::setMessage('Data has been', 'updated', 'success');
+			header("Location: " . BASEURL . "/mahasiswa");
+			exit;
+		} else {
+			FlashMessage::setMessage('Data failed to', 'updated', 'danger');
 			header("Location: " . BASEURL . "/mahasiswa");
 			exit;
 		}
@@ -55,6 +69,11 @@ class Mahasiswa extends Controller
 			header("Location: " . BASEURL . "/mahasiswa");
 			exit;
 		}
+	}
+
+	public function getMahasiswaByNpm()
+	{
+		echo json_encode($this->model('Mahasiswa_model')->getMahasiswaByNPM($_POST['npm']));
 	}
 
 }

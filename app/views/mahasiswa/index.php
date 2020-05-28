@@ -4,7 +4,7 @@
 	</div>
 	<div class=" row col-lg-6 mb-2">
 		<!-- Button trigger modal -->
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+		<button type="button" class="btn btn-primary" data-toggle="modal" id="btnTambah" data-target="#formModal">
 			Tambah Data Mahasiswa
 		</button>
 	</div>
@@ -15,8 +15,15 @@
 		<?php foreach($data["mhs"] as $mhs): ?>
 			<li class="list-group-item">
 				<?= $mhs["nama_mhs"]; ?>
-				<a href="<?= BASEURL; ?>/mahasiswa/delete/<?= $mhs['npm']; ?>" class="badge badge-danger float-right ml-1" onclick="return confirm('Yakin?');">Delete</a>
-				<a href="<?= BASEURL; ?>/mahasiswa/details/<?= $mhs['npm']; ?>" class="badge badge-success float-right ml-1">Details</a>
+				<a href="<?= BASEURL; ?>/mahasiswa/delete/<?= $mhs['npm']; ?>" class="badge badge-danger float-right ml-1" onclick="return confirm('Yakin?');">
+					Delete
+				</a>
+				<a href="<?= BASEURL; ?>/mahasiswa/update/<?= $mhs['npm']; ?>" class="badge badge-primary float-right ml-1 updateModal" data-toggle="modal" data-target="#formModal" data-npm="<?= $mhs['npm']; ?>">
+					Update
+				</a>
+				<a href="<?= BASEURL; ?>/mahasiswa/details/<?= $mhs['npm']; ?>" class="badge badge-success float-right ml-1">
+					Details
+				</a>
 			</li>
 		<?php endforeach; ?>
 	</ul>
@@ -28,12 +35,12 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="TambahDataMahasiswa" aria-hidden="true">
+<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="TambahDataMahasiswa">
-			Tambah Data Mahasiswa
+        <h5 class="modal-title" id="formModalLabel">
+			
 		</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" class="text-danger">&times;</span>
@@ -79,6 +86,11 @@
 					<option value="0" disabled selected>
 						--Pilih Jurusan--
 					</option>
+					<?php foreach($data["jurusan"] as $jurusan): ?>
+						<option value="<?= $jurusan['id_jurusan']; ?>">
+						<?= $jurusan["nm_jurusan"]; ?>
+						</option>
+					<?php endforeach;?>
 				</select>
 				<span id="checkJurusan" class="form-text text-danger" style="font-size: 14px;"></span>
 			</div>
@@ -86,7 +98,7 @@
 				<label for="semester">
 					Semester
 				</label>
-				<input type="number" class="form-control" id="semester" name="semester" autocomplete="off">
+				<input type="number" class="form-control" id="semester" name="semester" autocomplete="off" min="0" max="8">
 				<span id="checkSemester" class="form-text text-danger" style="font-size: 14px;"></span>
 			</div>
 			<div class="form-group">
